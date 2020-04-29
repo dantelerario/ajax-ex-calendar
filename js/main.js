@@ -2,13 +2,24 @@
  * WELCOME TO MOMENT JS
  */
 $(document).ready(function () {
-    
+
     /**
      * SETUP
      */
 
     // Punto di partenza
-    var baseMonth = moment('2018-01-01'); 
+    var baseMonth = moment('2018-01-01');
+
+    // Prossimo Mese
+    var nextBtn = $('.next');
+    var newBaseMonth = moment(baseMonth);
+
+    nextBtn.click( function() {
+      console.log('click next');
+      newBaseMonth = moment(baseMonth).add(1, 'M');
+      var newMonth = newBaseMonth;
+      console.log(newMonth);
+    });
 
     // Init Hndlenars
     var source = $('#day-template').html();
@@ -85,7 +96,7 @@ function printHoliday(date) {
             }
         },
         error: function() {
-            console.log('Errore chiamata festività'); 
+            console.log('Errore chiamata festività');
         }
     });
 }
